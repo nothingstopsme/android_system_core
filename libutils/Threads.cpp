@@ -302,6 +302,15 @@ void androidSetCreateThreadFunc(android_create_thread_fn func)
     gCreateThreadFn = func;
 }
 
+pid_t androidGetTid()
+{
+#ifdef HAVE_GETTID
+    return gettid();
+#else
+    return getpid();
+#endif
+}
+
 #if defined(__ANDROID__)
 int androidSetThreadPriority(pid_t tid, int pri)
 {
