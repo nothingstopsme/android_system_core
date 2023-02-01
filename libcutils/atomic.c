@@ -24,3 +24,41 @@
 #define ANDROID_ATOMIC_INLINE
 
 #include <cutils/atomic.h>
+
+//the linkable version of atomic functions (names are altered to avoid name conflict), provided for backward compatibility
+
+int32_t androidatomic__inc(volatile int32_t* addr)
+{
+		return android_atomic_inc(addr);
+}
+
+int32_t androidatomic__dec(volatile int32_t* addr)
+{
+		return android_atomic_dec(addr);
+}
+
+int32_t androidatomic__add(int32_t value, volatile int32_t* addr)
+{
+		return android_atomic_add(value, addr);
+}
+
+int32_t androidatomic__and(int32_t value, volatile int32_t* addr)
+{
+		return android_atomic_and(value, addr);
+}
+
+int32_t androidatomic__or(int32_t value, volatile int32_t* addr)
+{
+		return android_atomic_or(value, addr);
+}
+
+int androidatomic__acquire_cas(int32_t oldvalue, int32_t newvalue, volatile int32_t* addr)
+{
+		return android_atomic_acquire_cas(oldvalue, newvalue, addr);
+}
+
+int androidatomic__release_cas(int32_t oldvalue, int32_t newvalue, volatile int32_t* addr)
+{
+		return android_atomic_release_cas(oldvalue, newvalue, addr);
+}
+

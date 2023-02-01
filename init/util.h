@@ -65,6 +65,7 @@ int make_dir(const char *path, mode_t mode);
 int restorecon(const char *pathname);
 int restorecon_recursive(const char *pathname);
 int restorecon_recursive_skipce(const char *pathname);
+int restorecon_recursive_with_datadata_on(const char *pathname);
 std::string bytes_to_hex(const uint8_t *bytes, size_t bytes_len);
 bool is_dir(const char* pathname);
 bool expand_props(const std::string& src, std::string* dst);

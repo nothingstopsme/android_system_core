@@ -496,6 +496,12 @@ int restorecon_recursive_skipce(const char* pathname)
             SELINUX_ANDROID_RESTORECON_RECURSE | SELINUX_ANDROID_RESTORECON_SKIPCE);
 }
 
+int restorecon_recursive_with_datadata_on(const char *pathname)
+{
+    return selinux_android_restorecon(pathname, RESTORECON_RECURSIVE_FLAGS | SELINUX_ANDROID_RESTORECON_DATADATA);
+}
+
+
 /*
  * Writes hex_len hex characters (1/2 byte) to hex from bytes.
  */

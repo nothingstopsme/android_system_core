@@ -301,7 +301,8 @@ on post-fs
     # Mount shared so changes propagate into child namespaces
     mount rootfs rootfs / shared rec
     # Mount default storage into root namespace
-    mount none /mnt/runtime/default /storage slave bind rec
+		# since vold wil try to fuse /mnt/runtime/default/emulated to /storage/emulated, the mount operation here will cause vold to be stuck in a checking loop
+    # mount none /mnt/runtime/default /storage slave bind rec
 
     # Make sure /sys/kernel/debug (if present) is labeled properly
     restorecon_recursive /sys/kernel/debug

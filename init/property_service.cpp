@@ -321,7 +321,13 @@ static bool property_set_async(const char* name,
 
 static int restorecon_recursive_async(const char* name, const char* value)
 {
-    return restorecon_recursive(value);
+#if 0
+		//special rule: allowing the label of every directories (including "user" and "user_de") under /mnt/expand to be set by restorecon_recursive() which walks through the directory tree recursively
+		if(value && !strncmp(value, "/mnt/expand", 11) && (value[11] == '\0' || value[11] == '/'))
+	    return restorecon_recursive_with_datadata_on(value);
+		else
+#endif
+	  return restorecon_recursive(value);
 }
 
 int property_set(const char* name, const char* value) {

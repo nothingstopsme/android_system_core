@@ -103,6 +103,7 @@ LOCAL_SRC_FILES := $(libcutils_common_sources) \
         trace-dev.c \
         uevent.c \
 
+
 LOCAL_SRC_FILES_arm += arch-arm/memset32.S
 LOCAL_SRC_FILES_arm64 += arch-arm64/android_memset.S
 
